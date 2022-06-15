@@ -30,7 +30,7 @@ RUN conda update -n base -c defaults conda
 RUN conda create -n app_env
 # Deep Learning Libraries
 RUN conda install -n app_env -c defaults pyyaml typing pillow
-RUN conda install -n app_env -c pytorch magma-cuda112
+RUN conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
 
 # Pip libraries
 RUN conda install -n app_env pip
