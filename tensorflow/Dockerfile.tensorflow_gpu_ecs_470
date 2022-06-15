@@ -26,11 +26,12 @@ RUN wget \
 RUN conda init bash
 RUN conda update -n base -c defaults conda
 
+# Create ENV
 # Deep Learning Libraries
-RUN conda install -n base -c defaults pyyaml typing pillow
-RUN conda install -n base pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cudatoolkit=11.3 -c pytorch -c conda-forge
+RUN conda install  -n base -c defaults pyyaml typing pillow
+RUN conda install  -n base -c anaconda tensorflow-gpu  
 
-# Pip package manager
+# Pip libraries
 RUN conda install -n base pip
 
 

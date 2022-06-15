@@ -26,12 +26,14 @@ RUN conda init bash
 RUN conda update -n base -c defaults conda
 
 # Create ENV
-RUN conda create -n app_env
 # Deep Learning CPU 
-RUN conda install -c conda-forge mkl-service 
-RUN conda install -c defaults -c intel \
+RUN conda install -n base -c conda-forge mkl-service 
+RUN conda install -n base -c defaults -c intel \
   mkl-include mkl-dnn \
   pyyaml typing pillow 
-RUN conda install pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cpuonly -c pytorch
+RUN conda install -n base pytorch==1.10.1 torchvision==0.11.2 torchaudio==0.10.1 cpuonly -c pytorch
 
-RUN conda install -n app_env pip
+# Pip package manager
+RUN conda install -n base pip
+
+CMD ["/bin/bash"]
